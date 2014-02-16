@@ -3,10 +3,25 @@ function parallax( koef ) {
     $('body').css('background-position', '50% ' + (-(scrolled / koef)) + 'px');
 }
 
+function addToggleListener(from, to) {
+	var duration = 200;
+	$(document).on('click', 'a[href=' + to + ']', function(e) {
+		e.preventDefault();
+		$(from).slideUp(duration, function() {
+			$(to).slideDown(duration);
+		});
+		$(this).parent().find('a').each(function() { $(this).removeClass('active') });
+		$(this).addClass('active');
+	});
+}
+
 $(document).ready(function() {
 	$(window).scroll(function(e){
 	    parallax(3);
 	});
+
+	addToggleListener('#lith', '#us');
+	addToggleListener('#us', '#lith');
 });
 
 
