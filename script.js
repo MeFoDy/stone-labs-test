@@ -15,6 +15,35 @@ function addToggleListener(from, to) {
 	});
 }
 
+function validateEmail(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+function validateSkype(skype) {
+	var re = /^[a-zA-Z][a-zA-Z0-9\.,\-_]{5,31}$/;
+	return re.test(skype);
+}
+
+function setNospamming(text) {
+	var duration = 200;
+	$('#nospamming').fadeOut(duration, function() {
+		$('#nospamming').html(text).fadeIn(duration);
+		$('#sendEmail').removeAttr("disabled").text("Send");
+	});
+}
+
+function currentDateTime() {
+	var currentdate = new Date(); 
+	var datetime = currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " в "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+	return datetime;
+}
+
 $(document).ready(function() {
 	$(window).scroll(function(e){
 	    parallax(3);
@@ -22,33 +51,46 @@ $(document).ready(function() {
 
 	addToggleListener('#lith', '#us');
 	addToggleListener('#us', '#lith');
+
+	$(document).on('click', 'a[href=#]', function(e) { e.preventDefault(); });
+
+	var nospamming = $('#nospamming').html();
+	$(document).on('click', '#sendEmail', function() {
+		$(this).attr("disabled", "disabled").text("Sending...");
+		var input = $('#email').val().trim();
+		if (input.length < 50 && (validateSkype(input) || validateEmail(input))) {
+
+			$.ajax({
+				type: 'POST',
+				url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+				data: {
+					'key': 'Nt5JCseE1DTZHRPcAy4qgQ',
+					'message': {
+					  'from_email': 'mefody93@mail.ru',
+					  'to': [
+					      {
+					        'email': 'ek@stone-labs.com',
+					        'type': 'to'
+					      }
+					    ],
+					  'autotext': 'true',
+					  'subject': 'Stone Labs Test',
+					  'html': '<p>На сайте stone-labs ' + currentDateTime() + ' вам оставили сообщение: "' + input + '"</p>'
+					}
+				}
+			}).done(function(response) {
+				setNospamming("Thank you for your query. We'll get in touch with you in 24 hours.")
+			});
+		} else {
+			setNospamming("Please, enter correct e-mail or skype.");
+		}
+	});
+
+	$('.scrollup').appear();
+	$.force_appear();
+	$(document).on('appear', '.scrollup', function(e, $elements) {
+		$elements.each(function() {
+			$(this).animate({'padding-top': '0'}, 700, 'swing');
+		});
+	});
 });
-
-
-
-/**
-$(document.body).on('appear', 'section h3', function(e, $affected) {
-    // this code is executed for each appeared element
-    $(this).yellowFade();
-
-    $appeared.empty();
-    $affected.each(function() {
-      $appeared.append(this.innerHTML+"\n");
-    })
-  });
-
-  $(document.body).on('disappear', 'section h3', function(e, $affected) {
-    // this code is executed for each disappeared element
-    $disappeared.empty();
-    $affected.each(function() {
-      $disappeared.append(this.innerHTML+"\n");
-    })
-  });
-
-
-  [a-zA-Z][a-zA-Z0-9\.,\-_]{5,31}
-  function validateEmail(email) { 
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-} 
-  */

@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Stone Labs</title>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,700,400,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="jquery.appear.js"></script>
-	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="script.min.js"></script>
 </head>
 <body>
-	<div class="row header">
-		<div class="logo grid grid3"><a href="/"><img src="img/logo.png"></a></div>
-		<div class="header-text grid grid6">
-			<p class="sorry">Sorry, our website is under construction.</p>
-			<p class="subsorry">Still, we have something to tell you!</p>
-		</div>
-		<div class="grid3">
-			<p class="comment">See old version of our website <a href="#">here</a>.</p>
+	<div class="scrollup">
+		<div class="row header">
+			<div class="logo grid grid3"><a href="/"><img src="img/logo.png"></a></div>
+			<div class="header-text grid grid6">
+				<p class="sorry">Sorry, our website is under construction.</p>
+				<p class="subsorry">Still, we have something to tell you!</p>
+			</div>
+			<div class="grid3">
+				<p class="comment">See old version of our website <a href="#">here</a>.</p>
+			</div>
 		</div>
 	</div>
 
 	<div class="row arrows-row"></div>
 
-	<div class="img-devices row">
-		<div class="grid grid1"></div>
-		<div class="grid grid6"><img src="img/devices.png"></div>
+	<div class="scrollup">
+		<div class="img-devices row">
+			<div class="grid grid1"></div>
+			<div class="grid grid6"><img src="img/devices.png"></div>
+		</div>
 	</div>
 	<div class="row middle">
-		<div class="grid grid9 text">
-			<h3>We create websites and apps<br>for iPhone, iPad, Android &amp; Web</h3>
-			<p>Great solutions for every kind of business, no matter what you do.</p>
+		<div class="scrollup">
+			<div class="grid grid9 text">
+				<h3>We create websites and apps<br>for iPhone, iPad, Android &amp; Web</h3>
+				<p>Great solutions for every kind of business, no matter what you do.</p>
+			</div>
 		</div>
-		<div class="grid3">
-			<p class="comment">Download samples of our recent work:<br><a class="portfolio" href="#">stone-labs-portfolio.pdf</a></p>
+
+		<div class="scrollup">
+			<div class="grid3">
+				<p class="comment">Download samples of our recent work:<br><a class="portfolio" href="#">stone-labs-portfolio.pdf</a></p>
+			</div>
 		</div>
 	</div>
 
@@ -40,15 +50,18 @@
 
 	<div class="form row">
 		<div class="grid grid2"></div>
-		<div class="grid10 brain">
-			<h3>You need a team to bring your ideas to life?</h3>
-			<p class="contact">Leave your contacts, and we'll contact you to discuss it:</p>
-			<div class="subrow">
-				<div class="grid grid7">
-					<form><input type="text" placeholder="E-mail or Skype"><button>Send</button></form>
-				</div>
-				<div class="grid3">
-					<p class="comment">We'll get in touch with you in 24 hours.<br>No spamming.</p>
+		
+		<div class="scrollup">
+			<div class="grid10 brain">
+				<h3>You need a team to bring your ideas to life?</h3>
+				<p class="contact">Leave your contacts, and we'll contact you to discuss it:</p>
+				<div class="subrow">
+					<div class="grid grid7">
+						<form><input type="text" id="email" name="email" placeholder="E-mail or Skype"><button id="sendEmail">Send</button></form>
+					</div>
+					<div class="grid3">
+						<p class="comment" id="nospamming">We'll get in touch with you in 24 hours.<br>No spamming.</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -56,37 +69,44 @@
 
 	<div class="row arrows-row"></div>
 
-	<div class="thanks row">
-		<div class="grid grid3"></div>
-		<div class="grid5"><p>Thank you!</p></div>
+	
+	<div class="scrollup">
+		<div class="thanks row">
+			<div class="grid grid3"></div>
+			<div class="grid5"><p>Thank you!</p></div>
+		</div>
 	</div>
 
-	<footer>
-		<div class="row footer">
-			<div class="grid grid3">
-				<p class="comment">Web and Mobile Development Studio.<br><br>For any questions<br><a href="mailto:info@stone-labs.com">info@stone-labs.com</a></p>
-			</div>
-			<div class="grid grid5">
-				<p class="comment">Check out our social network pages:</p>
-				<div class="social">
-					<a class="facebook" href="#"></a>
-					<a class="vk" href="#"></a>
-					<a class="gplus" href="#"></a>
-					<a class="linkedin" href="#"></a>
-					<a class="twitter" href="#"></a>
-					<a class="yandex" href="#"></a>
+
+	<div class="scrollup">
+		<footer>
+			<div class="row footer">
+				<div class="grid grid3">
+					<p class="comment">Web and Mobile Development Studio.<br><br>For any questions<br><a href="mailto:info@stone-labs.com">info@stone-labs.com</a></p>
+				</div>
+				<div class="grid grid5">
+					<p class="comment">Check out our social network pages:</p>
+					<div class="social">
+						<a class="facebook" href="#"></a>
+						<a class="vk" href="#"></a>
+						<a class="gplus" href="#"></a>
+						<a class="linkedin" href="#"></a>
+						<a class="twitter" href="#"></a>
+						<a class="yandex" href="#"></a>
+					</div>
+				</div>
+				<div class="grid4">
+					<p class="comment trigger"><a class="active" href="#us">US Office</a> <a href="#lith">Lithuanian Office</a></p>
+					<p class="comment" id="us">US-Trading-Center, 3468 N. Oceanshore Blvd. Unit 3<br>Flagler Beach FL 32136, USA<br><strong>Phone:</strong> (386) 246-3774<br><strong>Fax:</strong> (386) 246-3779</p>
+					<p class="comment" id="lith">12-3 Dragunu str, Klaipeda, Lithuania, LT-92331<br><strong>Phone:</strong> (386) 246-3774<br><strong>Fax:</strong> (386) 246-3779</p>
 				</div>
 			</div>
-			<div class="grid4">
-				<p class="comment trigger"><a class="active" href="#us">US Office</a> <a href="#lith">Lithuanian Office</a></p>
-				<p class="comment" id="us">US-Trading-Center, 3468 N. Oceanshore Blvd. Unit 3<br>Flagler Beach FL 32136, USA<br><strong>Phone:</strong> (386) 246-3774<br><strong>Fax:</strong> (386) 246-3779</p>
-				<p class="comment" id="lith">12-3 Dragunu str, Klaipeda, Lithuania, LT-92331<br><strong>Phone:</strong> (386) 246-3774<br><strong>Fax:</strong> (386) 246-3779</p>
+			<div class="row copyright">
+				<div class="grid grid3"><p>&copy; 2009-2014 Stone Labs</p></div>
+				<div class="grid grid5"><p>Design &mdash;<img src="img/el.png"></p></div>
 			</div>
-		</div>
-		<div class="row copyright">
-			<div class="grid grid3"><p>&copy; 2009-2014 Stone Labs</p></div>
-			<div class="grid grid5"><p>Design &mdash;<img src="img/el.png"></p></div>
-		</div>
-	</footer>
+		</footer>
+	</div>
+
 </body>
 </html>

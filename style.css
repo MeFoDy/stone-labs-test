@@ -150,6 +150,9 @@ body {
 	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
 	width: 110px;
 }
+.form button[disabled=disabled] {
+	background-color: #ed6b94;
+}
 .form .comment {
 	margin: 0;
 }
@@ -224,3 +227,7 @@ footer .copyright p img {
 }
 #us, #lith {margin: 0;}
 #lith {display: none;}
+
+.scrollup {
+	padding-top: 200px;
+}
